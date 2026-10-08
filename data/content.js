@@ -106,6 +106,22 @@ const SITE_CONTENT = {
     },
   ],
 
+  // Shown under Education. Most recent first. Leave link "" if there is none.
+  certifications: [
+    {
+      name: "Data Analysis and Visualization with Python",
+      issuer: "Microsoft · Coursera",
+      date: "Jul 2026",
+      link: "https://www.coursera.org/account/accomplishments/verify/49FYT8IU7RAW",
+    },
+    {
+      name: "Python Programming Fundamentals",
+      issuer: "Microsoft · Coursera",
+      date: "Jun 2026",
+      link: "https://www.coursera.org/account/accomplishments/verify/Z90XOXYYFHFG",
+    },
+  ],
+
   skills: [
     {
       group: "Programming & Data",

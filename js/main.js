@@ -217,6 +217,35 @@ function renderEducation(content) {
   fill("education-list", cards);
 }
 
+function renderCertifications(content) {
+  const certs = content.certifications || [];
+
+  // No certifications: hide the "Certifications" heading too.
+  if (certs.length === 0) {
+    const title = document.getElementById("certifications-title");
+    if (title) title.hidden = true;
+    return;
+  }
+
+  const items = certs
+    .map(
+      (cert) => `
+      <li class="cert-item">
+        <div>
+          <p class="cert-name">${escapeHtml(cert.name)}</p>
+          <p class="cert-meta">${escapeHtml(cert.issuer)} · ${escapeHtml(cert.date)}</p>
+        </div>
+        ${
+          hasValue(cert.link)
+            ? `<a class="cert-link" href="${escapeHtml(cert.link)}" target="_blank" rel="noopener noreferrer">View credential<span class="visually-hidden"> for ${escapeHtml(cert.name)} (opens in a new tab)</span></a>`
+            : ""
+        }
+      </li>`
+    )
+    .join("");
+  fill("certifications-list", items);
+}
+
 function renderSkills(content) {
   const groups = content.skills
     .map(
@@ -328,6 +357,7 @@ renderAbout(SITE_CONTENT);
 renderProjects(PROJECTS);
 renderExperience(SITE_CONTENT);
 renderEducation(SITE_CONTENT);
+renderCertifications(SITE_CONTENT);
 renderSkills(SITE_CONTENT);
 renderContact(SITE_CONTENT);
 setupProjectToggles();
