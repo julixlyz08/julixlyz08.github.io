@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Julie Loyez | Data Analyst Portfolio</title>
+  <meta name="description" content="Julie Loyez: MS in Business Analytics at CSUN. Data analysis projects in Python, SQL, machine learning, and Tableau.">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+
+  <!--
+    Link preview: what LinkedIn, iMessage, Slack, etc. show when the link is shared.
+    These need the FULL website address. If the final address is different
+    from https://julixlyz08.github.io/, update the two lines marked "URL".
+  -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Julie Loyez | Data Analyst Portfolio">
+  <meta property="og:description" content="MS in Business Analytics at CSUN. Data projects in Python, SQL, machine learning, and Tableau.">
+  <meta property="og:url" content="https://julixlyz08.github.io/"> <!-- URL -->
+  <meta property="og:image" content="https://julixlyz08.github.io/assets/images/social-preview.png"> <!-- URL -->
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Julie Loyez: Seeking data analyst roles in Los Angeles, CA">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Inter font from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!--
+    index.html: the STRUCTURE of the page (the empty "boxes").
+    The text that fills these boxes comes from data/content.js and
+    data/projects.js. js/main.js does the filling.
+    You rarely need to edit this file.
+  -->
+
+  <!-- Lets keyboard users jump past the menu -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main">
+      <a class="nav-name" href="#top" data-fill="name">Julie Loyez</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- 1. HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-name">
+      <div class="container hero-inner">
+        <div id="hero-photo"></div>
+        <div class="hero-text">
+          <p class="hero-label" id="hero-label"></p>
+          <h1 class="hero-name" id="hero-name" data-fill="name">Julie Loyez</h1>
+          <p class="hero-tagline" id="hero-tagline"></p>
+          <ul class="tag-list hero-skills" id="hero-skills" aria-label="Top skills"></ul>
+          <div class="button-row" id="hero-actions"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ABOUT -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container narrow">
+        <h2 class="section-title" id="about-title">About</h2>
+        <div class="about-text" id="about-text"></div>
+      </div>
+    </section>
+
+    <!-- 3. PROJECTS -->
+    <section class="section section-tinted" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <h2 class="section-title" id="projects-title">Projects</h2>
+        <div class="project-list" id="project-list"></div>
+      </div>
+    </section>
+
+    <!-- 4. EXPERIENCE -->
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="container narrow">
+        <h2 class="section-title" id="experience-title">Experience</h2>
+        <ol class="timeline" id="experience-list"></ol>
+      </div>
+    </section>
+
+    <!-- 5. EDUCATION -->
+    <section class="section section-tinted" id="education" aria-labelledby="education-title">
+      <div class="container">
+        <h2 class="section-title" id="education-title">Education</h2>
+        <div class="card-grid" id="education-list"></div>
+      </div>
+    </section>
+
+    <!-- 6. SKILLS -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <h2 class="section-title" id="skills-title">Skills</h2>
+        <div class="skills-grid" id="skills-list"></div>
+      </div>
+    </section>
+
+    <!-- 7. CONTACT -->
+    <section class="section section-tinted" id="contact" aria-labelledby="contact-title">
+      <div class="container narrow contact">
+        <h2 class="section-title" id="contact-title">Contact</h2>
+        <p class="contact-text" id="contact-text"></p>
+        <div class="button-row" id="contact-actions"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="footer-year"></span> <span data-fill="name">Julie Loyez</span></p>
+    </div>
+  </footer>
+
+  <noscript>
+    <p class="container">This website needs JavaScript to display its content.
+      You can also find Julie on <a href="https://www.linkedin.com/in/julie-loyez">LinkedIn</a>.</p>
+  </noscript>
+
+  <!-- Order matters: content first, then the code that uses it. -->
+  <script src="data/content.js"></script>
+  <script src="data/projects.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

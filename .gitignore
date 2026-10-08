@@ -1,0 +1,25 @@
+# Mac system files
+.DS_Store
+
+# Private resume WITH phone number: never publish this file.
+# The web-safe copy goes in assets/resume/ instead.
+Julie_Resume.pdf
+
+# Project source files (datasets, reports, code with API keys).
+# These are for reference only and should not be published with the website.
+Credit risk score project/
+Stock pipeline project/
+online_resume.pdf
+
+# Local preview settings
+.claude/
+
+# Original full-size screenshots (web versions live in assets/images/)
+/*.png
+
+# Corrected files for the GitHub project repositories (uploaded separately)
+GitHub fixes/
+
+# Planning notes used while building the site (kept private)
+CLAUDE.md
+PLAN.md

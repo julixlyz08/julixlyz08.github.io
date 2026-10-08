@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Screenshot coming soon">
+  <rect width="1600" height="1000" fill="#F1ECF7"/>
+  <g fill="none" stroke="#6B4F9E" stroke-width="10" opacity="0.5">
+    <rect x="650" y="340" width="300" height="220" rx="20"/>
+    <polyline points="680,520 760,440 820,490 880,420 920,460"/>
+  </g>
+  <text x="800" y="640" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="44" fill="#6B4F9E">Screenshot coming soon</text>
+</svg>
