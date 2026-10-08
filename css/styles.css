@@ -110,9 +110,10 @@ a:hover {
   padding: 0 1.5rem;
 }
 
-/* Narrow sections keep the same left edge but shorter, easier-to-read lines */
+/* Text sections use the full page width (same as the projects).
+   To make lines shorter again, add a max-width here, e.g. max-width: 780px; */
 .narrow > * {
-  max-width: 780px;
+  max-width: none;
 }
 
 .section {
@@ -325,7 +326,72 @@ a:hover {
 
 .project-main {
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Screenshot is a button: click to open it full-size */
+.project-image-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.enlarge-hint {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(63, 29, 69, 0.85);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.project-image-button:hover .enlarge-hint,
+.project-image-button:focus-visible .enlarge-hint {
+  background: var(--color-purple);
+}
+
+/* Full-size screenshot viewer */
+.image-viewer {
+  width: min(1200px, 94vw);
+  max-height: 92vh;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  overflow: auto;
+  background: #fff;
+}
+
+.image-viewer::backdrop {
+  background: rgba(20, 10, 25, 0.75);
+}
+
+.image-viewer img {
+  width: 100%;
+  height: auto;
+}
+
+.image-viewer-close {
+  position: sticky;
+  top: 0.75rem;
+  float: right;
+  margin: 0.75rem;
+  padding: 0.45rem 0.9rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-aubergine);
+  color: #fff;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .project-image {
@@ -459,10 +525,35 @@ a:hover {
 }
 
 /* ---------- 10. Education cards ---------- */
+/* Education: one full-width card per degree */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+/* Inside each card: degree info on the left, date and GPA on the right */
+.card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 2rem;
+}
+
+.card > * {
+  grid-column: 1;
+}
+
+.card > .card-date {
+  grid-column: 2;
+  grid-row: 1;
+  text-align: right;
+}
+
+.card > .card-gpa {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: end;
+  align-self: start;
 }
 
 .card {
@@ -525,6 +616,7 @@ a:hover {
 }
 
 .contact > * {
+  max-width: 720px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -552,9 +644,6 @@ a:hover {
 
 /* ---------- 13. Tablets ---------- */
 @media (max-width: 900px) {
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
 
   .project-main {
     grid-template-columns: 1fr;
@@ -602,6 +691,23 @@ a:hover {
 
   .project-details {
     grid-template-columns: 1fr;
+  }
+
+  /* Education cards: stack date and GPA under the degree on phones */
+  .card {
+    grid-template-columns: 1fr;
+  }
+
+  .card > .card-date,
+  .card > .card-gpa {
+    grid-column: 1;
+    grid-row: auto;
+    text-align: left;
+    justify-self: start;
+  }
+
+  .card > .card-gpa {
+    margin-bottom: 0.5rem;
   }
 
   .btn {

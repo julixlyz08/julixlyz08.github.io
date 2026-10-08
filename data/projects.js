@@ -10,6 +10,7 @@
    - context:     e.g. "Team capstone · CSUN"
    - highlight:   one key result shown on the card ("" to hide)
    - image.src:   screenshot path, e.g. "assets/images/credit-risk.png"
+   - image.full:  optional bigger version shown when the screenshot is clicked
                   (leave "" to show a "coming soon" placeholder)
    - links:       leave "" to hide a button
    - details:     text ("...") becomes a paragraph,
@@ -30,6 +31,7 @@ const PROJECTS = [
     tags: ["Python", "pandas", "SQL", "SQLite", "Tableau", "TMDB API"],
     image: {
       src: "assets/images/movie-profitability.png",
+      full: "assets/images/movie-profitability-full.png", // shown when the screenshot is clicked
       alt: "Tableau dashboard titled What makes a movie profitable, showing 5,651 movies analyzed, a 1.81x typical return, and a bar chart where franchise films out-earn standalone films at every budget size",
     },
     links: {

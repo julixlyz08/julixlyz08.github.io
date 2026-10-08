@@ -146,8 +146,19 @@ function renderProjectCard(project) {
   return `
     <article class="project-card" id="project-${escapeHtml(project.id)}">
       <div class="project-main">
-        <img class="project-image" src="${escapeHtml(imageSrc)}" alt="${escapeHtml(imageAlt)}"
-             width="1600" height="1000" loading="lazy">
+        ${
+          hasImage
+            ? `<button type="button" class="project-image-button"
+                       data-full="${escapeHtml(project.image.full || project.image.src)}"
+                       data-alt="${escapeHtml(imageAlt)}"
+                       aria-label="Enlarge screenshot: ${escapeHtml(project.title)}">
+                 <img class="project-image" src="${escapeHtml(imageSrc)}" alt="${escapeHtml(imageAlt)}"
+                      width="1600" height="1000" loading="lazy">
+                 <span class="enlarge-hint" aria-hidden="true">Click to enlarge</span>
+               </button>`
+            : `<img class="project-image" src="${escapeHtml(imageSrc)}" alt="${escapeHtml(imageAlt)}"
+                    width="1600" height="1000" loading="lazy">`
+        }
         <div class="project-body">
           <p class="project-meta">${meta}</p>
           <h3 class="project-title">${escapeHtml(project.title)}</h3>
@@ -242,6 +253,28 @@ function setupProjectToggles() {
   });
 }
 
+/* ---------- Screenshot viewer: click a screenshot to see it full-size ---------- */
+
+function setupImageViewer() {
+  const viewer = document.getElementById("image-viewer");
+  const viewerImage = document.getElementById("image-viewer-img");
+  if (!viewer || !viewerImage) return; // viewer missing from index.html: skip safely
+
+  document.querySelectorAll(".project-image-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      viewerImage.src = button.dataset.full;
+      viewerImage.alt = button.dataset.alt;
+      viewer.showModal(); // the Escape key also closes it
+    });
+  });
+
+  // Close with the button, or by clicking the dark area around the image.
+  document.getElementById("image-viewer-close").addEventListener("click", () => viewer.close());
+  viewer.addEventListener("click", (event) => {
+    if (event.target === viewer) viewer.close();
+  });
+}
+
 /* ---------- Build the page ---------- */
 
 renderHero(SITE_CONTENT);
@@ -252,3 +285,4 @@ renderEducation(SITE_CONTENT);
 renderSkills(SITE_CONTENT);
 renderContact(SITE_CONTENT);
 setupProjectToggles();
+setupImageViewer();
