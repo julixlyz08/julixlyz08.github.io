@@ -320,7 +320,9 @@ a:hover {
   transition: box-shadow 0.2s;
 }
 
-.project-card:hover {
+/* Soft shadow when the cursor is over a project or education block */
+.project-card:hover,
+.card:hover {
   box-shadow: 0 8px 28px rgba(63, 29, 69, 0.08);
 }
 
@@ -601,6 +603,7 @@ a:hover {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 1.75rem;
+  transition: box-shadow 0.2s;
 }
 
 .card-date {
