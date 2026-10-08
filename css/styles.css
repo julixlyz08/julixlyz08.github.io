@@ -508,6 +508,46 @@ a:hover {
   border: 3px solid var(--color-purple);
 }
 
+/* --- Moving circle ---
+   When JavaScript runs, it adds "has-marker": the per-job circles are hidden
+   and one circle slides along the line as you scroll. */
+.timeline-wrap {
+  position: relative;
+}
+
+.timeline-marker {
+  display: none;
+  position: absolute;
+  left: -7px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-purple);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px var(--color-purple);
+  transition: transform 0.12s ease-out;
+}
+
+.has-marker .timeline-marker {
+  display: block;
+}
+
+.has-marker .timeline-item::before {
+  display: none;
+}
+
+/* The job next to the circle is highlighted */
+.timeline-item .timeline-date,
+.timeline-item .timeline-role {
+  transition: color 0.2s;
+}
+
+.has-marker .timeline-item.is-active .timeline-date,
+.has-marker .timeline-item.is-active .timeline-role {
+  color: var(--color-purple);
+}
+
 .timeline-date {
   color: var(--color-text-muted);
   font-size: 0.9rem;

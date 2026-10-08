@@ -275,6 +275,52 @@ function setupImageViewer() {
   });
 }
 
+/* ---------- Experience: one circle that follows your scrolling ---------- */
+
+function setupTimelineMarker() {
+  const wrap = document.getElementById("timeline-wrap");
+  const marker = document.getElementById("timeline-marker");
+  const items = document.querySelectorAll(".timeline-item");
+  if (!wrap || !marker || items.length === 0) return;
+
+  wrap.classList.add("has-marker"); // hides the per-job circles (see styles.css)
+
+  function update() {
+    // The "reading line" is 40% down the screen. The circle sits where that
+    // line crosses the timeline, but never above the first job or below the last.
+    const readingLine = window.innerHeight * 0.4;
+    const first = items[0].offsetTop;
+    const last = items[items.length - 1].offsetTop;
+    const position = readingLine - wrap.getBoundingClientRect().top;
+    const y = Math.min(Math.max(position, first), last);
+
+    marker.style.transform = `translateY(${y + 5}px)`;
+
+    // Highlight the job the circle has reached.
+    items.forEach((item, index) => {
+      const next = items[index + 1];
+      const reached = y >= item.offsetTop - 1;
+      const notPastNext = !next || y < next.offsetTop - 1;
+      item.classList.toggle("is-active", reached && notPastNext);
+    });
+  }
+
+  // Run at most once per screen refresh while scrolling.
+  let waiting = false;
+  function onScroll() {
+    if (waiting) return;
+    waiting = true;
+    requestAnimationFrame(() => {
+      update();
+      waiting = false;
+    });
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  update();
+}
+
 /* ---------- Build the page ---------- */
 
 renderHero(SITE_CONTENT);
@@ -286,3 +332,4 @@ renderSkills(SITE_CONTENT);
 renderContact(SITE_CONTENT);
 setupProjectToggles();
 setupImageViewer();
+setupTimelineMarker();
