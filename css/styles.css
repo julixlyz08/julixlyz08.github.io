@@ -481,6 +481,13 @@ a:hover {
   grid-column: 1 / -1;
 }
 
+/* Project series: the parts list sits between Question and Data,
+   so those two also use the full width instead of half */
+.has-parts .detail-question,
+.has-parts .detail-data {
+  grid-column: 1 / -1;
+}
+
 /* Project series: numbered parts, each with its own GitHub link */
 .parts-list {
   list-style: none;

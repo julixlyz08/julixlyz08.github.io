@@ -200,7 +200,7 @@ function renderProjectCard(project) {
           </div>
         </div>
       </div>
-      <div class="project-details" id="${panelId}" hidden>
+      <div class="project-details${hasValue(project.details.parts) ? " has-parts" : ""}" id="${panelId}" hidden>
         ${details}
       </div>
     </article>`;
