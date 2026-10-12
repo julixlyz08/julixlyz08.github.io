@@ -24,14 +24,14 @@
 
 const PROJECTS = [
   {
-    // Sources: the READMEs of the five repos below, and CONCLUSION.md in amc-debt-and-survival.
+    // Sources: the READMEs of the four repos below, and CONCLUSION.md in amc-debt-and-survival.
     id: "amc-series",
-    title: "AMC & the Movie Business: From Box Office to Balance Sheet",
-    context: "Personal project series · 5 parts",
+    title: "AMC: From Box Office to Balance Sheet",
+    context: "Personal project series · 4 parts",
     date: "Fall 2026",
-    description: "Five connected projects that follow the movie business from which films make money, to how many people go to AMC theatres, to why AMC's stock collapsed, how it makes money, and whether it can carry its debt. Built from the TMDB API and every AMC 10-Q and 10-K, with two Tableau dashboards.",
+    description: "Four connected projects that follow AMC from how many people go to its theatres, to why its stock collapsed, how it makes money, and whether it can carry its debt. Built from every AMC 10-Q and 10-K, with an interactive Tableau dashboard.",
     highlight: "AMC needs about 168 million U.S. guests a year to stop burning cash. It has 165 million, and $3.2bn of debt falls due in 2029.",
-    tags: ["Python", "pandas", "SQL", "Tableau", "SEC XBRL", "TMDB API", "Forecasting", "Financial modeling"],
+    tags: ["Python", "pandas", "statsmodels", "Tableau", "SEC XBRL", "Forecasting", "Financial modeling", "Statistical testing"],
     image: {
       src: "assets/images/amc-series.png",
       full: "assets/images/amc-series-full.png", // shown when the screenshot is clicked
@@ -44,25 +44,23 @@ const PROJECTS = [
       extra: [
         { label: "Read the conclusion", href: "https://github.com/julixlyz08/amc-debt-and-survival/blob/main/CONCLUSION.md" },
         { label: "Dashboard: AMC's debt", href: "https://public.tableau.com/app/profile/julie.loyez/viz/AMCCanitcarryitsdebt/AMCdebtandsurvival" },
-        { label: "Dashboard: movie returns", href: "https://public.tableau.com/app/profile/julie.loyez/viz/WhatMakesaMovieProfitable_17913327259050/MovieProfitabilityDashboard" },
       ],
     },
     details: {
       question: "AMC is the world's largest cinema chain, and its guests spend more per visit than ever. So why did its share price fall 97%, and can the company survive on what its theatres earn?",
       parts: [
-        { title: "Movie profitability", finding: "Franchise films earn 3.3x their budget vs 1.4x for standalone films; summer and December releases do best.", github: "https://github.com/julixlyz08/movie_profitability_analysis" },
         { title: "Attendance forecast & subscription model", finding: "About 170 million U.S. guests next year (8-in-10 range 151 to 215 million); knowing the film slate did not improve the forecast.", github: "https://github.com/julixlyz08/amc-attendance-forecast-subscription" },
         { title: "Stock vs attendance", finding: "No link: share issuance (70 to 86 times more shares) explains the whole 97% fall in the price.", github: "https://github.com/julixlyz08/amc-stock-vs-attendance" },
         { title: "How AMC makes money", finding: "Snacks now earn AMC as much as tickets; the theatres roughly break even, and interest turns that into large losses.", github: "https://github.com/julixlyz08/amc-how-it-makes-money" },
         { title: "Debt and survival", finding: "Debt now costs about 12% a year; shares paid the interest since 2020; break-even is about 168 million guests at today's rates.", github: "https://github.com/julixlyz08/amc-debt-and-survival" },
       ],
-      data: "15,599 films from the TMDB API (2000 to 2025); every AMC and Cinemark 10-Q and 10-K from 2015 to mid-2026, parsed directly from SEC XBRL files (debt by instrument, cash flows, leases, costs); daily share prices; Treasury, SOFR and corporate bond yields from FRED, the U.S. Treasury and the New York Fed.",
+      data: "Every AMC and Cinemark 10-Q and 10-K from 2015 to mid-2026, parsed directly from SEC XBRL files (debt by instrument, cash flows, leases, costs); daily share prices; Treasury, SOFR and corporate bond yields from FRED, the U.S. Treasury and the New York Fed; release data for 5,971 films from TMDB, reused from my movie profitability project.",
       whatIDid: [
-        "Collected and cleaned the data with Python: a TMDB pipeline stored in SQLite, and a parser for full SEC XBRL filings that recovers figures the standard SEC API leaves out, checked against reported totals.",
+        "Collected and cleaned the data with Python, including a parser for full SEC XBRL filings that recovers figures the standard SEC API leaves out, checked against reported totals.",
         "Tested 28 attendance forecast variations on 18 rolling out-of-sample tests, and turned past forecast misses into low, base, high and stress scenarios.",
         "Ran correlation and event-study tests (with permutation tests) of AMC's stock against attendance, and broke AMC's costs into fixed and variable parts.",
         "Built a debt ledger, AMC's true cost of borrowing against market rates, a cash sources-and-uses breakdown, and a survival model that links all four AMC projects.",
-        "Built two interactive Tableau Public dashboards, including a survival map where you can pick any attendance and interest rate.",
+        "Built an interactive Tableau Public dashboard: a survival map where you can pick any attendance and interest rate.",
       ],
       findings: [
         "The stock collapsed because of dilution, not lost guests: from 2020 to mid-2026, AMC sold $3.9bn of shares, covering $2.3bn of interest, and swapped debt for about 36% of today's shares.",
@@ -108,6 +106,44 @@ const PROJECTS = [
         "Suggested using the model as an automatic pre-screen that flags applications for underwriter review, retrained at least every quarter.",
       ],
       role: "Team of two, with Hannah Rika-Villasis. We each wrote the full pipeline independently, then compared our approaches and combined the strongest parts of both. I also wrote the project memo.",
+    },
+  },
+
+  {
+    // Source: github.com/julixlyz08/movie_profitability_analysis (README)
+    id: "movie-profitability",
+    title: "Movie Profitability Analysis",
+    context: "Personal project · data reused in the AMC series",
+    date: "Fall 2026",
+    description: "Which movies earn the best return, and when should they be released? An end-to-end analysis of 5,651 theatrical releases (2000–2025), from API data collection to an interactive Tableau dashboard.",
+    highlight: "Franchise films earned 3.3x their budget vs. 1.4x for standalone films, at every budget level.",
+    tags: ["Python", "pandas", "SQL", "SQLite", "Tableau", "TMDB API"],
+    image: {
+      src: "assets/images/movie-profitability.png",
+      full: "assets/images/movie-profitability-full.png", // shown when the screenshot is clicked
+      alt: "Tableau dashboard titled What makes a movie profitable, showing 5,651 movies analyzed, a 1.81x typical return, and a bar chart where franchise films out-earn standalone films at every budget size",
+    },
+    links: {
+      github: "https://github.com/julixlyz08/movie_profitability_analysis",
+      tableau: "https://public.tableau.com/app/profile/julie.loyez/viz/WhatMakesaMovieProfitable_17913327259050/MovieProfitabilityDashboard",
+    },
+    details: {
+      question: "A studio choosing what to make and when to release it wants to know which choices pay off: which movies earn the best return on investment, and when should they be released?",
+      data: "15,599 movies collected from the TMDB API (the 600 most-voted films per year, 2000–2025, going 30 pages deep so results aren't skewed toward hits). After cleaning, 5,651 theatrical releases with reported budgets and revenue were analyzed. This product uses the TMDB API but is not endorsed or certified by TMDB.",
+      whatIDid: [
+        "Collected the data with Python from the TMDB API, with error handling and retries, and stored it in SQLite.",
+        "Cleaned the data: removed movies with missing or tiny budgets or revenue, and flagged 178 likely streaming or limited releases so they wouldn't look like flops.",
+        "Compared median return on investment (box office ÷ budget) by genre, release month, budget size, franchise status, and year.",
+        "Built an interactive Tableau Public dashboard to tell the story.",
+      ],
+      findings: [
+        "Franchise status matters more than budget: franchise films earned a median 3.3x return vs. 1.4x for standalone films, and the gap holds at every budget level.",
+        "Spending more doesn't buy a much better return. Blockbusters look strong mainly because about two-thirds of them are franchise films.",
+        "Horror stands out among large genres: 2.6x median return across 458 films, with a typical budget of about $10M.",
+        "Timing matters: July (2.3x), June (2.2x), and December (2.1x) perform best; September and October (about 1.4x) perform worst despite having the most releases.",
+        "2020 broke the market: median return fell from 2.3x in 2019 to 0.8x, and had only recovered to about 1.7x by 2025.",
+      ],
+      role: "Solo project: I did everything from data collection and cleaning to analysis and the dashboard.",
     },
   },
 
