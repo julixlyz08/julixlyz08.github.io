@@ -21,40 +21,39 @@
 
 const PROJECTS = [
   {
-    // Source: github.com/julixlyz08/movie_profitability_analysis (README)
-    id: "movie-profitability",
-    title: "Movie Profitability Analysis",
+    // Source: github.com/julixlyz08/amc-attendance-forecast-subscription (README and result files)
+    id: "amc-forecast",
+    title: "AMC Attendance Forecast & Subscription Pricing Model",
     context: "Personal project",
     date: "Fall 2026",
-    description: "Which movies earn the best return, and when should they be released? An end-to-end analysis of 5,651 theatrical releases (2000–2025), from API data collection to an interactive Tableau dashboard.",
-    highlight: "Franchise films earned 3.3x their budget vs. 1.4x for standalone films, at every budget level.",
-    tags: ["Python", "pandas", "SQL", "SQLite", "Tableau", "TMDB API"],
+    description: "How many people will go to AMC theatres over the next year, and what does that mean for a subscription like A-List? A tested attendance forecast built from AMC's SEC filings, plus a subscription-economics model.",
+    highlight: "Showed the July 2026 A-List price increase pays off unless AMC loses more than 7–21% of its members.",
+    tags: ["Python", "pandas", "statsmodels", "Forecasting", "Scenario analysis", "SEC filings"],
     image: {
-      src: "assets/images/movie-profitability.png",
-      full: "assets/images/movie-profitability-full.png", // shown when the screenshot is clicked
-      alt: "Tableau dashboard titled What makes a movie profitable, showing 5,651 movies analyzed, a 1.81x typical return, and a bar chart where franchise films out-earn standalone films at every budget size",
+      src: "assets/images/amc-forecast.png",
+      alt: "Line chart of AMC U.S. attendance from 2022 to 2026 with a dashed forecast for the next four quarters and shaded low-to-high and stress ranges",
     },
     links: {
-      github: "https://github.com/julixlyz08/movie_profitability_analysis",
-      tableau: "https://public.tableau.com/app/profile/julie.loyez/viz/WhatMakesaMovieProfitable_17913327259050/MovieProfitabilityDashboard",
+      github: "https://github.com/julixlyz08/amc-attendance-forecast-subscription",
+      tableau: "",
     },
     details: {
-      question: "A studio choosing what to make and when to release it wants to know which choices pay off: which movies earn the best return on investment, and when should they be released?",
-      data: "15,599 movies collected from the TMDB API (the 600 most-voted films per year, 2000–2025, going 30 pages deep so results aren't skewed toward hits). After cleaning, 5,651 theatrical releases with reported budgets and revenue were analyzed. This product uses the TMDB API but is not endorsed or certified by TMDB.",
+      question: "How well can U.S. movie theatre attendance be forecast one year ahead, and does knowing the film slate help? What range should a planner prepare for? And is a subscription like A-List profitable, which members drive that, and does a price increase pay?",
+      data: "46 quarters (2015 Q1 to 2026 Q2) of U.S. attendance, revenue, theatres, and screens from AMC's 10-Q and 10-K filings; release dates, budgets, and franchise status for 5,971 films from TMDB (via my movie profitability project); A-List prices and member counts from news coverage of AMC announcements.",
       whatIDid: [
-        "Collected the data with Python from the TMDB API, with error handling and retries, and stored it in SQLite.",
-        "Cleaned the data: removed movies with missing or tiny budgets or revenue, and flagged 178 likely streaming or limited releases so they wouldn't look like flops.",
-        "Compared median return on investment (box office ÷ budget) by genre, release month, budget size, franchise status, and year.",
-        "Built an interactive Tableau Public dashboard to tell the story.",
+        "Built a quarterly dataset from SEC filings: derived each fourth quarter from annual totals, flagged the Carmike acquisition and pandemic closures, and checked figures against reported totals.",
+        "Tested 28 forecast variations (same quarter last year, seasonal smoothing, and regressions with and without release-calendar features) on 18 rolling tests, each made with only the data available four quarters earlier.",
+        "Turned the spread of past forecast misses into low, high, and stress scenarios for the next four quarters.",
+        "Built a subscription-economics model with labeled low, base, and high assumptions, two ways of paying studios, sensitivity analysis, payback, and price-increase break-even.",
       ],
       findings: [
-        "Franchise status matters more than budget: franchise films earned a median 3.3x return vs. 1.4x for standalone films, and the gap holds at every budget level.",
-        "Spending more doesn't buy a much better return. Blockbusters look strong mainly because about two-thirds of them are franchise films.",
-        "Horror stands out among large genres: 2.6x median return across 458 films, with a typical budget of about $10M.",
-        "Timing matters: July (2.3x), June (2.2x), and December (2.1x) perform best; September and October (about 1.4x) perform worst despite having the most releases.",
-        "2020 broke the market: median return fell from 2.3x in 2019 to 0.8x, and had only recovered to about 1.7x by 2025.",
+        "A simple blend of seasonal smoothing and 'same quarter last year' was the steadiest forecast: 17.1% average miss across all tests and 13.9% since 2023. No model clearly beat the simple baselines.",
+        "Adding the release calendar (big-budget and franchise film counts) made forecasts slightly worse once post-pandemic data was available.",
+        "Forecast for 2026 Q3 to 2027 Q2: about 170 million U.S. guests, with an 8-in-10 range of 151 to 215 million.",
+        "A typical member is worth about $117 to $131 a year and pays back the cost of winning them in 4 to 5 months, under base assumptions.",
+        "The share of member visits that are 'extra' drives everything: moving it from 25% to 75% moves the program from about $11M to $236M a year.",
       ],
-      role: "Solo project: I did everything from data collection and cleaning to analysis and the dashboard.",
+      role: "Independent project: I built the dataset, the forecasts, and the subscription model on my own.",
     },
   },
 
@@ -91,6 +90,44 @@ const PROJECTS = [
         "Suggested using the model as an automatic pre-screen that flags applications for underwriter review, retrained at least every quarter.",
       ],
       role: "Team of two, with Hannah Rika-Villasis. We each wrote the full pipeline independently, then compared our approaches and combined the strongest parts of both. I also wrote the project memo.",
+    },
+  },
+
+  {
+    // Source: github.com/julixlyz08/movie_profitability_analysis (README)
+    id: "movie-profitability",
+    title: "Movie Profitability Analysis",
+    context: "Personal project",
+    date: "Fall 2026",
+    description: "Which movies earn the best return, and when should they be released? An end-to-end analysis of 5,651 theatrical releases (2000–2025), from API data collection to an interactive Tableau dashboard.",
+    highlight: "Franchise films earned 3.3x their budget vs. 1.4x for standalone films, at every budget level.",
+    tags: ["Python", "pandas", "SQL", "SQLite", "Tableau", "TMDB API"],
+    image: {
+      src: "assets/images/movie-profitability.png",
+      full: "assets/images/movie-profitability-full.png", // shown when the screenshot is clicked
+      alt: "Tableau dashboard titled What makes a movie profitable, showing 5,651 movies analyzed, a 1.81x typical return, and a bar chart where franchise films out-earn standalone films at every budget size",
+    },
+    links: {
+      github: "https://github.com/julixlyz08/movie_profitability_analysis",
+      tableau: "https://public.tableau.com/app/profile/julie.loyez/viz/WhatMakesaMovieProfitable_17913327259050/MovieProfitabilityDashboard",
+    },
+    details: {
+      question: "A studio choosing what to make and when to release it wants to know which choices pay off: which movies earn the best return on investment, and when should they be released?",
+      data: "15,599 movies collected from the TMDB API (the 600 most-voted films per year, 2000–2025, going 30 pages deep so results aren't skewed toward hits). After cleaning, 5,651 theatrical releases with reported budgets and revenue were analyzed. This product uses the TMDB API but is not endorsed or certified by TMDB.",
+      whatIDid: [
+        "Collected the data with Python from the TMDB API, with error handling and retries, and stored it in SQLite.",
+        "Cleaned the data: removed movies with missing or tiny budgets or revenue, and flagged 178 likely streaming or limited releases so they wouldn't look like flops.",
+        "Compared median return on investment (box office ÷ budget) by genre, release month, budget size, franchise status, and year.",
+        "Built an interactive Tableau Public dashboard to tell the story.",
+      ],
+      findings: [
+        "Franchise status matters more than budget: franchise films earned a median 3.3x return vs. 1.4x for standalone films, and the gap holds at every budget level.",
+        "Spending more doesn't buy a much better return. Blockbusters look strong mainly because about two-thirds of them are franchise films.",
+        "Horror stands out among large genres: 2.6x median return across 458 films, with a typical budget of about $10M.",
+        "Timing matters: July (2.3x), June (2.2x), and December (2.1x) perform best; September and October (about 1.4x) perform worst despite having the most releases.",
+        "2020 broke the market: median return fell from 2.3x in 2019 to 0.8x, and had only recovered to about 1.7x by 2025.",
+      ],
+      role: "Solo project: I did everything from data collection and cleaning to analysis and the dashboard.",
     },
   },
 
