@@ -104,14 +104,36 @@ function renderAbout(content) {
   fill("about-text", content.about.map((sentence) => textBlock(sentence)).join(""));
 }
 
-// The five parts of every project's detail panel, in order.
+// The parts of every project's detail panel, in order ("parts" is only used by project series).
 const DETAIL_SECTIONS = [
   { key: "question", heading: "Question" },
+  { key: "parts", heading: "The parts" },
   { key: "data", heading: "Data" },
   { key: "whatIDid", heading: "What I did" },
   { key: "findings", heading: "Findings" },
   { key: "role", heading: "My role" },
 ];
+
+// Numbered list of the projects in a series, each with its own GitHub link.
+function partsList(parts) {
+  const items = parts
+    .map(
+      (part) => `
+      <li class="part">
+        <div class="part-text">
+          <p class="part-title">${escapeHtml(part.title)}</p>
+          <p class="part-finding">${escapeHtml(part.finding)}</p>
+        </div>
+        ${
+          hasValue(part.github)
+            ? `<a class="part-link" href="${escapeHtml(part.github)}" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden">: ${escapeHtml(part.title)} (opens in a new tab)</span></a>`
+            : ""
+        }
+      </li>`
+    )
+    .join("");
+  return `<ol class="parts-list">${items}</ol>`;
+}
 
 function renderProjectCard(project) {
   const panelId = `details-${project.id}`;
@@ -130,7 +152,10 @@ function renderProjectCard(project) {
 
   const links =
     linkButton({ label: "View on GitHub", href: project.links.github, style: "secondary", external: true }) +
-    linkButton({ label: "View on Tableau", href: project.links.tableau, style: "secondary", external: true });
+    linkButton({ label: "View on Tableau", href: project.links.tableau, style: "secondary", external: true }) +
+    (project.links.extra || [])
+      .map((link) => linkButton({ label: link.label, href: link.href, style: "secondary", external: true }))
+      .join("");
 
   // Sections left empty ("") are skipped entirely.
   const details = DETAIL_SECTIONS.filter((section) => hasValue(project.details[section.key]))
@@ -138,7 +163,7 @@ function renderProjectCard(project) {
       (section) => `
         <div class="detail-block detail-${section.key}">
           <h4>${section.heading}</h4>
-          ${textBlock(project.details[section.key])}
+          ${section.key === "parts" ? partsList(project.details.parts) : textBlock(project.details[section.key])}
         </div>`
     )
     .join("");

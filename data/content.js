@@ -122,18 +122,19 @@ const SITE_CONTENT = {
     },
   ],
 
+  // Only skills backed by the projects or experience above. Keep each group short.
   skills: [
     {
       group: "Programming & Data",
-      items: ["Python", "pandas", "scikit-learn", "SQL", "SQLite", "REST APIs", "Data pipelines"],
+      items: ["Python", "pandas", "SQL", "scikit-learn", "statsmodels", "REST APIs"],
     },
     {
-      group: "Analytics & Visualization",
-      items: ["Machine learning", "Tableau", "Excel", "Data visualization", "Data analysis", "Quantitative surveys", "Market research"],
+      group: "Analysis",
+      items: ["Forecasting", "Machine learning", "Financial modeling", "Scenario analysis", "Statistical testing", "Survey analysis"],
     },
     {
-      group: "Marketing",
-      items: ["Social media marketing", "Content creation"],
+      group: "Visualization & Tools",
+      items: ["Tableau", "Excel", "matplotlib"],
     },
     {
       group: "Languages",
