@@ -1236,3 +1236,19 @@ h1, h2, h3, h4,
   color: var(--color-text-muted);
 }
 
+
+/* ---------- Page not found (404.html) ---------- */
+.not-found {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.not-found .hero-name {
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+}
+
+/* Footer: "Last updated" note */
+.footer-updated {
+  white-space: nowrap;
+}

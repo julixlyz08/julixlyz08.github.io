@@ -167,6 +167,9 @@ const SITE_CONTENT = {
     },
   ],
 
+  // Shown in the footer. Change it whenever you update the site.
+  lastUpdated: "October 2026",
+
   contact: {
     text: "I'm open to data analyst opportunities. The best way to reach me is by email, and I'm happy to connect on LinkedIn too.",
   },

@@ -34,7 +34,7 @@ const PROJECTS = [
     highlight: "AMC needs about 168 million U.S. guests a year to stop burning cash. It has 165 million, and $3.2bn of debt falls due in 2029.",
     tags: ["Python", "pandas", "statsmodels", "Tableau", "SEC XBRL", "Forecasting", "Financial modeling", "Statistical testing"],
     image: {
-      src: "assets/images/amc-series.png",
+      src: "assets/images/amc-series.webp",
       alt: "Bar chart of AMC's U.S. attendance from 2015 to the last four quarters (165 million), against break-even lines at 168 million to stop burning cash and 184 million to report a profit",
     },
     links: {
@@ -85,7 +85,7 @@ const PROJECTS = [
     highlight: "Rising wages land on store owners, not head office: by FY2030 an owner's profit roughly halves while head office's take grows 14%.",
     tags: ["Python", "pandas", "statsmodels", "Spatial analysis", "Panel regression", "Monte Carlo", "Valuation"],
     image: {
-      src: "assets/images/seven-eleven.png",
+      src: "assets/images/seven-eleven.webp",
       alt: "Line chart, FY2019 = 100: by FY2030 the minimum wage reaches 164, sales per store 118, head office's take 114, and the owner's profit falls to 46",
     },
     links: {
@@ -122,7 +122,7 @@ const PROJECTS = [
     highlight: "Large hosts' 15% price premium mostly reflects bigger homes: like-for-like, it shrinks to 2–5%, within what could be chance.",
     tags: ["SQL", "SQLite", "Python", "statsmodels", "Regression", "Text analysis", "Time series"],
     image: {
-      src: "assets/images/airbnb.png",
+      src: "assets/images/airbnb.webp",
       alt: "Bar chart: single-listing hosts are 67% of short-term hosts with 40% of listings, while hosts with 6+ listings are 11% of hosts with 37% of listings",
     },
     links: {
@@ -160,7 +160,7 @@ const PROJECTS = [
     highlight: "Raised the share of risky loans caught from 22% to 86% with a cost-based threshold, cutting total error cost by more than half.",
     tags: ["Python", "scikit-learn", "Machine learning", "Logistic Regression"],
     image: {
-      src: "assets/images/credit-risk.png",
+      src: "assets/images/credit-risk.webp",
       alt: "Bar chart of test-set ROC-AUC: Random Forest 0.79, Logistic Regression 0.77 (recommended), Decision Tree 0.72, Neural Network 0.71",
     },
     links: {

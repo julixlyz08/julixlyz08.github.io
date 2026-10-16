@@ -342,6 +342,7 @@ function renderContact(content) {
   fill("contact-text", escapeHtml(content.contact.text));
   fill("contact-actions", contactButtons(content.links));
   fill("footer-year", String(new Date().getFullYear()));
+  if (hasValue(content.lastUpdated)) fill("footer-updated", ` · Last updated ${escapeHtml(content.lastUpdated)}`);
 }
 
 /* ---------- Project panels: open / close ---------- */
