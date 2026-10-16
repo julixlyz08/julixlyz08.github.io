@@ -120,6 +120,29 @@ const SITE_CONTENT = {
     },
   ],
 
+  // Short written pieces about the projects (shown in the Writing section).
+  // readTime: about 230 words per minute.
+  writing: [
+    {
+      title: "From box office to balance sheet: what four projects say about AMC",
+      teaser: "Why AMC's stock fell 97% while guests came back, and the one attendance line that decides its future.",
+      readTime: "7 min read",
+      link: "https://github.com/julixlyz08/amc-debt-and-survival/blob/main/CONCLUSION.md",
+    },
+    {
+      title: "7-Eleven Japan: who pays for the best-run chain in the world?",
+      teaser: "Its edge is narrower than its reputation, and rising wages are landing on store owners, not head office.",
+      readTime: "4 min read",
+      link: "https://github.com/julixlyz08/seven-eleven-japan-who-pays#the-answer-in-one-paragraph",
+    },
+    {
+      title: "Airbnb in LA: do professional hosts charge more?",
+      teaser: "Mostly not: their higher prices reflect bigger homes, but their guests do report more problems.",
+      readTime: "1 min read",
+      link: "https://github.com/julixlyz08/airbnb-who-the-hosts-are#key-findings",
+    },
+  ],
+
   // Only skills backed by the projects or experience above. Keep each group short.
   skills: [
     {

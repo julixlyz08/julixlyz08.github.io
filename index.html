@@ -48,6 +48,7 @@
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#writing">Writing</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -87,6 +88,15 @@
         <div class="project-featured" id="project-featured"></div>
         <div class="project-grid" id="project-main"></div>
         <div class="more-projects" id="more-projects"></div>
+      </div>
+    </section>
+
+    <!-- WRITING: short pieces about the projects (from data/content.js) -->
+    <section class="section" id="writing" aria-labelledby="writing-title">
+      <div class="container narrow">
+        <h2 class="section-title" id="writing-title">Writing</h2>
+        <p class="writing-intro">Short write-ups of what my projects found, for readers who want the story without the code.</p>
+        <ul class="writing-list" id="writing-list"></ul>
       </div>
     </section>
 
@@ -143,6 +153,16 @@
     <img id="image-viewer-img" src="" alt="">
   </dialog>
 
+  <!-- Window for the interactive Tableau dashboard (loads only when opened) -->
+  <dialog class="embed-viewer" id="embed-viewer" aria-labelledby="embed-viewer-title">
+    <div class="embed-viewer-bar">
+      <h3 class="embed-viewer-title" id="embed-viewer-title"></h3>
+      <a class="embed-viewer-link" id="embed-viewer-link" href="#" target="_blank" rel="noopener noreferrer">Open in Tableau<span class="visually-hidden"> (opens in a new tab)</span></a>
+      <button type="button" class="image-viewer-close" id="embed-viewer-close">Close ✕</button>
+    </div>
+    <iframe class="embed-viewer-frame" id="embed-viewer-frame" title="" loading="lazy"></iframe>
+  </dialog>
+
   <!-- Reading panel for the details of the medium-size project cards -->
   <dialog class="details-viewer" id="details-viewer" aria-labelledby="details-viewer-title">
     <button type="button" class="image-viewer-close" id="details-viewer-close">Close ✕</button>
@@ -159,5 +179,8 @@
   <script src="data/content.js"></script>
   <script src="data/projects.js"></script>
   <script src="js/main.js"></script>
+
+  <!-- GoatCounter: privacy-friendly visitor counts (no cookies). Dashboard: https://julixlyz08.goatcounter.com -->
+  <script data-goatcounter="https://julixlyz08.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>

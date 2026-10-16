@@ -40,10 +40,16 @@ const PROJECTS = [
     links: {
       github: "",
       tableau: "",
+      // Interactive Tableau dashboard, opened inside the page (loads only when clicked).
+      explore: {
+        label: "Explore the model",
+        embed: "https://public.tableau.com/views/AMCCanitcarryitsdebt/AMCdebtandsurvival?:showVizHome=no&:embed=true",
+        title: "AMC: Can it carry its debt? (interactive Tableau dashboard)",
+        page: "https://public.tableau.com/app/profile/julie.loyez/viz/AMCCanitcarryitsdebt/AMCdebtandsurvival",
+      },
       // Extra buttons, shown in this order.
       extra: [
         { label: "Read the conclusion", href: "https://github.com/julixlyz08/amc-debt-and-survival/blob/main/CONCLUSION.md" },
-        { label: "Dashboard: AMC's debt", href: "https://public.tableau.com/app/profile/julie.loyez/viz/AMCCanitcarryitsdebt/AMCdebtandsurvival" },
         { label: "Related: movie profitability", href: "https://github.com/julixlyz08/movie_profitability_analysis" },
       ],
     },

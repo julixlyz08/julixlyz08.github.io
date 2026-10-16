@@ -202,6 +202,14 @@ function renderProjectCard(project) {
                 : `<button type="button" class="btn btn-primary project-open"
                            data-panel="${panelId}" data-title="${escapeHtml(project.title)}">Read more</button>`
             }
+            ${
+              project.links.explore
+                ? `<button type="button" class="btn btn-explore project-explore"
+                           data-embed="${escapeHtml(project.links.explore.embed)}"
+                           data-page="${escapeHtml(project.links.explore.page)}"
+                           data-title="${escapeHtml(project.links.explore.title)}">${escapeHtml(project.links.explore.label)}</button>`
+                : ""
+            }
             ${links}
           </div>
         </div>
@@ -240,6 +248,26 @@ function renderMoreProjects(projects, githubUrl) {
      <ul class="more-list">${rows}</ul>
      <p class="more-all"><a href="${escapeHtml(githubUrl)}" target="_blank" rel="noopener noreferrer">See all my projects on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></p>`
   );
+}
+
+function renderWriting(content) {
+  const pieces = content.writing || [];
+  const section = document.getElementById("writing");
+  if (pieces.length === 0) {
+    if (section) section.hidden = true; // no pieces: hide the whole section
+    return;
+  }
+  const items = pieces
+    .map(
+      (piece) => `
+      <li class="writing-item">
+        <a class="writing-title" href="${escapeHtml(piece.link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(piece.title)}<span class="visually-hidden"> (opens in a new tab)</span></a>
+        <p class="writing-teaser">${escapeHtml(piece.teaser)}</p>
+        <p class="writing-meta">${escapeHtml(piece.readTime)} · on GitHub</p>
+      </li>`
+    )
+    .join("");
+  fill("writing-list", items);
 }
 
 function renderExperience(content) {
@@ -362,6 +390,29 @@ function setupDetailsViewer() {
   });
 }
 
+/* ---------- Interactive dashboard window (loads the dashboard only when opened) ---------- */
+
+function setupEmbedViewer() {
+  const viewer = document.getElementById("embed-viewer");
+  if (!viewer) return;
+  const frame = document.getElementById("embed-viewer-frame");
+
+  document.querySelectorAll(".project-explore").forEach((button) => {
+    button.addEventListener("click", () => {
+      document.getElementById("embed-viewer-title").textContent = button.dataset.title;
+      document.getElementById("embed-viewer-link").href = button.dataset.page;
+      frame.title = button.dataset.title;
+      if (frame.getAttribute("src") !== button.dataset.embed) frame.src = button.dataset.embed;
+      viewer.showModal();
+    });
+  });
+
+  document.getElementById("embed-viewer-close").addEventListener("click", () => viewer.close());
+  viewer.addEventListener("click", (event) => {
+    if (event.target === viewer) viewer.close();
+  });
+}
+
 /* ---------- Screenshot viewer: click a screenshot to see it full-size ---------- */
 
 function setupImageViewer() {
@@ -436,6 +487,7 @@ renderHero(SITE_CONTENT);
 renderAbout(SITE_CONTENT);
 renderProjects(PROJECTS);
 renderMoreProjects(typeof MORE_PROJECTS === "undefined" ? [] : MORE_PROJECTS, SITE_CONTENT.links.github);
+renderWriting(SITE_CONTENT);
 renderExperience(SITE_CONTENT);
 renderEducation(SITE_CONTENT);
 renderCertifications(SITE_CONTENT);
@@ -443,5 +495,6 @@ renderSkills(SITE_CONTENT);
 renderContact(SITE_CONTENT);
 setupProjectToggles();
 setupDetailsViewer();
+setupEmbedViewer();
 setupImageViewer();
 setupTimelineMarker();
