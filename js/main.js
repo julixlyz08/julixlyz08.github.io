@@ -362,18 +362,6 @@ function setupDetailsViewer() {
   });
 }
 
-/* ---------- PREVIEW ONLY: font switcher (remove before publishing) ---------- */
-
-function setupFontSwitcher() {
-  const buttons = document.querySelectorAll(".font-switcher button");
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      document.documentElement.dataset.font = button.dataset.font;
-      buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === button)));
-    });
-  });
-}
-
 /* ---------- Screenshot viewer: click a screenshot to see it full-size ---------- */
 
 function setupImageViewer() {
@@ -455,6 +443,5 @@ renderSkills(SITE_CONTENT);
 renderContact(SITE_CONTENT);
 setupProjectToggles();
 setupDetailsViewer();
-setupFontSwitcher();
 setupImageViewer();
 setupTimelineMarker();

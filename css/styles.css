@@ -18,8 +18,8 @@
   --color-todo-border: #E0B54A;
 
   --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-heading: var(--font);  /* headings, names, titles */
-  --font-mono: var(--font);     /* dates, tools, small labels */
+  --font-heading: "Fraunces", Georgia, serif;                   /* headings, names, titles */
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;  /* dates, tools, small labels */
   --radius: 12px;
   --max-width: 1080px;
   --section-space: 5.5rem;
@@ -260,7 +260,26 @@ a:hover {
 
 /* ---------- 6. Hero ---------- */
 .hero {
+  position: relative;
   padding: clamp(4.5rem, 12vw, 8rem) 0 clamp(4rem, 10vw, 7rem);
+}
+
+/* Faint grid-paper background, fading out toward the bottom */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(107, 79, 158, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(107, 79, 158, 0.09) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  pointer-events: none;
+}
+
+.hero > .container {
+  position: relative; /* keeps the text above the grid */
 }
 
 .hero-inner {
@@ -902,25 +921,10 @@ a:hover {
 
 
 /* =============================================================
-   PREVIEW: new typography, project tiers, compact list
+   Typography, project sizes, compact list
    ============================================================= */
 
-/* ---------- Font pairings (chosen with the preview switcher) ---------- */
-:root[data-font="editorial"] {
-  --font-heading: "Source Serif 4", Georgia, serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
-}
-
-:root[data-font="classic"] {
-  --font-heading: "Fraunces", Georgia, serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
-}
-
-:root[data-font="modern"] {
-  --font-heading: "Space Grotesk", var(--font);
-  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
-}
-
+/* ---------- Where the heading and label fonts are used ---------- */
 h1, h2, h3, h4,
 .nav-name,
 .cert-name,
@@ -1128,44 +1132,6 @@ h1, h2, h3, h4,
 .details-viewer .project-details {
   border-top: 0;
   background: #fff;
-}
-
-/* ---------- PREVIEW ONLY: font switcher ---------- */
-.font-switcher {
-  position: fixed;
-  left: 1rem;
-  bottom: 1rem;
-  z-index: 60;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.45rem 0.6rem;
-  background: #fff;
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-  box-shadow: 0 6px 20px rgba(63, 29, 69, 0.15);
-  font-family: var(--font);
-  font-size: 0.82rem;
-}
-
-.font-switcher span {
-  padding: 0 0.3rem;
-  color: var(--color-text-muted);
-}
-
-.font-switcher button {
-  padding: 0.3rem 0.7rem;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  background: none;
-  font: inherit;
-  color: var(--color-text);
-  cursor: pointer;
-}
-
-.font-switcher button[aria-pressed="true"] {
-  background: var(--color-aubergine);
-  color: #fff;
 }
 
 @media (max-width: 640px) {

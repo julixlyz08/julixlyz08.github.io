@@ -18,8 +18,7 @@ const SITE_CONTENT = {
   // Short row of tags under the tagline (your strongest tools).
   topSkills: ["Python", "SQL", "Tableau", "pandas", "scikit-learn", "Excel"],
 
-  // DRAFT: Julie to review.
-  tagline: "Business Analytics graduate student turning data into clear, actionable decisions.",
+  tagline: "Curious by nature. I take one question and follow it all the way down.",
 
   // Optional photo. To add one later: put the image in assets/images/
   // and write its path here, e.g. "assets/images/julie.jpg".
@@ -37,12 +36,11 @@ const SITE_CONTENT = {
     resume: "assets/resume/Julie_Loyez_Resume.pdf",
   },
 
-  // DRAFT: Julie to review. Each line is one sentence/paragraph.
+  // Each line is one paragraph. Written from Julie's own answers.
   about: [
-    "I'm a Master of Science in Business Analytics student at California State University, Northridge, graduating in May 2027.",
-    "I like taking data all the way from raw to a clear answer: cleaning it, modeling it in Python and SQL, and presenting it in Tableau so people can act on it.",
-    "Before analytics, I worked in sales, marketing, and team leadership in Los Angeles and France, which taught me to connect numbers to real business goals.",
-    "I'm a native French speaker, fluent in English, and I'm looking for a data analyst role where I can keep learning and make a measurable impact.",
+    "I came to data through curiosity. After business school in France, I realized there was a gap in what I could understand without it, so I started learning. It challenged me in a way nothing had in years, in the best way.",
+    "My first real project was a deep dive into AMC Theatres. One question about attendance turned into four projects, from the box office to the balance sheet, and showed me what I can do when I keep asking \"so what?\" instead of stopping at the first result.",
+    "I'm finishing my MS in Business Analytics at CSUN (May 2027). Entertainment is my childhood dream, but I'd be just as happy at any company where I can ask good questions of data and find a way to answer them.",
   ],
 
   // Most recent first.
