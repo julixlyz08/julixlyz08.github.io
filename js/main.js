@@ -202,14 +202,6 @@ function renderProjectCard(project) {
                 : `<button type="button" class="btn btn-primary project-open"
                            data-panel="${panelId}" data-title="${escapeHtml(project.title)}">Read more</button>`
             }
-            ${
-              project.links.explore
-                ? `<button type="button" class="btn btn-explore project-explore"
-                           data-embed="${escapeHtml(project.links.explore.embed)}"
-                           data-page="${escapeHtml(project.links.explore.page)}"
-                           data-title="${escapeHtml(project.links.explore.title)}">${escapeHtml(project.links.explore.label)}</button>`
-                : ""
-            }
             ${links}
           </div>
         </div>
@@ -390,29 +382,6 @@ function setupDetailsViewer() {
   });
 }
 
-/* ---------- Interactive dashboard window (loads the dashboard only when opened) ---------- */
-
-function setupEmbedViewer() {
-  const viewer = document.getElementById("embed-viewer");
-  if (!viewer) return;
-  const frame = document.getElementById("embed-viewer-frame");
-
-  document.querySelectorAll(".project-explore").forEach((button) => {
-    button.addEventListener("click", () => {
-      document.getElementById("embed-viewer-title").textContent = button.dataset.title;
-      document.getElementById("embed-viewer-link").href = button.dataset.page;
-      frame.title = button.dataset.title;
-      if (frame.getAttribute("src") !== button.dataset.embed) frame.src = button.dataset.embed;
-      viewer.showModal();
-    });
-  });
-
-  document.getElementById("embed-viewer-close").addEventListener("click", () => viewer.close());
-  viewer.addEventListener("click", (event) => {
-    if (event.target === viewer) viewer.close();
-  });
-}
-
 /* ---------- Screenshot viewer: click a screenshot to see it full-size ---------- */
 
 function setupImageViewer() {
@@ -495,6 +464,5 @@ renderSkills(SITE_CONTENT);
 renderContact(SITE_CONTENT);
 setupProjectToggles();
 setupDetailsViewer();
-setupEmbedViewer();
 setupImageViewer();
 setupTimelineMarker();

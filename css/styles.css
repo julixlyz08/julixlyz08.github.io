@@ -1187,23 +1187,6 @@ h1, h2, h3, h4,
   }
 }
 
-/* ---------- "Explore the model" button (interactive dashboard) ---------- */
-.btn-explore {
-  background: #fff;
-  color: var(--color-aubergine);
-  border-color: var(--color-aubergine);
-}
-
-.btn-explore::before {
-  content: "◧";
-  font-size: 0.9rem;
-}
-
-.btn-explore:hover {
-  background: var(--color-aubergine);
-  color: #fff;
-}
-
 /* ---------- Writing section ---------- */
 .writing-intro {
   color: var(--color-text-muted);
@@ -1253,63 +1236,3 @@ h1, h2, h3, h4,
   color: var(--color-text-muted);
 }
 
-/* ---------- Interactive dashboard window ---------- */
-.embed-viewer {
-  width: min(1240px, 96vw);
-  height: min(860px, 90vh);
-  padding: 0;
-  border: 0;
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-.embed-viewer[open] {
-  display: flex;
-  flex-direction: column;
-}
-
-.embed-viewer::backdrop {
-  background: rgba(20, 10, 25, 0.6);
-}
-
-.embed-viewer-bar {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.6rem 0.75rem 0.6rem 1.25rem;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.embed-viewer-title {
-  flex: 1;
-  margin: 0;
-  font-size: 1rem;
-}
-
-.embed-viewer-link {
-  font-size: 0.9rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.embed-viewer-link::after {
-  content: " ↗";
-}
-
-.embed-viewer .image-viewer-close {
-  position: static;
-  float: none;
-  margin: 0;
-}
-
-.embed-viewer-frame {
-  flex: 1;
-  width: 100%;
-  border: 0;
-}
-
-@media (max-width: 640px) {
-  .embed-viewer-title {
-    display: none; /* more room for the dashboard on phones */
-  }
-}
