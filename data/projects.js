@@ -176,7 +176,7 @@ const PROJECTS = [
         "Ran a cost sweep across thresholds from 0.10 to 0.70, counting each missed risky loan as 10 cost units and each wrongly declined good loan as 1.",
       ],
       findings: [
-        "Recommended Logistic Regression: ROC-AUC of 0.77, the best test F1 (0.31) and recall (0.22), and by far the smallest gap between training and test results.",
+        "Recommended Logistic Regression: a strong ROC-AUC of 0.77 and by far the smallest gap between training and test results, so it is the most reliable on new applicants.",
         "Random Forest had a slightly higher AUC (0.79) but overfit badly, dropping from a training F1 of 1.00 to a test F1 of 0.21.",
         "Loan term was the strongest predictor: borrowers requesting 60-month loans are more likely to be graded higher-risk.",
         "A 0.10 threshold had the lowest total cost: 1,362 cost units vs. 2,962 at the default 0.5 threshold, with recall rising from 22% to 86%.",
