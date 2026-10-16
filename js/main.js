@@ -137,6 +137,7 @@ function partsList(parts) {
 
 function renderProjectCard(project) {
   const panelId = `details-${project.id}`;
+  const tier = project.tier || "main"; // "featured" = big card, "main" = medium card
 
   // Use a placeholder image until a real screenshot is added.
   const hasImage = hasValue(project.image.src) && !isTodo(project.image.src);
@@ -148,7 +149,7 @@ function renderProjectCard(project) {
     .map((part) => (isTodo(part) ? todoNote(part, true) : escapeHtml(part)))
     .join(" · ");
 
-  const tags = project.tags.map((tag) => `<li class="tag">${escapeHtml(tag)}</li>`).join("");
+  const tools = project.tags.map(escapeHtml).join(" · ");
 
   const links =
     linkButton({ label: "View on GitHub", href: project.links.github, style: "secondary", external: true }) +
@@ -169,7 +170,7 @@ function renderProjectCard(project) {
     .join("");
 
   return `
-    <article class="project-card" id="project-${escapeHtml(project.id)}">
+    <article class="project-card project-${tier}" id="project-${escapeHtml(project.id)}">
       <div class="project-main">
         ${
           hasImage
@@ -188,14 +189,19 @@ function renderProjectCard(project) {
           <p class="project-meta">${meta}</p>
           <h3 class="project-title">${escapeHtml(project.title)}</h3>
           <p class="project-description">${escapeHtml(project.description)}</p>
-          ${hasValue(project.highlight) ? `<p class="project-highlight"><strong>Key result:</strong> ${escapeHtml(project.highlight)}</p>` : ""}
-          <ul class="tag-list" aria-label="Tools used">${tags}</ul>
+          ${hasValue(project.highlight) ? `<p class="project-highlight">${escapeHtml(project.highlight)}</p>` : ""}
+          <p class="project-tools"><span class="visually-hidden">Tools used: </span>${tools}</p>
           <div class="button-row">
-            <button type="button" class="btn btn-primary project-toggle"
-                    aria-expanded="false" aria-controls="${panelId}">
-              <span class="toggle-label">View details</span>
-              <span class="chevron" aria-hidden="true"></span>
-            </button>
+            ${
+              tier === "featured"
+                ? `<button type="button" class="btn btn-primary project-toggle"
+                           aria-expanded="false" aria-controls="${panelId}">
+                     <span class="toggle-label">View details</span>
+                     <span class="chevron" aria-hidden="true"></span>
+                   </button>`
+                : `<button type="button" class="btn btn-primary project-open"
+                           data-panel="${panelId}" data-title="${escapeHtml(project.title)}">Read more</button>`
+            }
             ${links}
           </div>
         </div>
@@ -207,7 +213,33 @@ function renderProjectCard(project) {
 }
 
 function renderProjects(projects) {
-  fill("project-list", projects.map(renderProjectCard).join(""));
+  fill("project-featured", projects.filter((p) => p.tier === "featured").map(renderProjectCard).join(""));
+  fill("project-main", projects.filter((p) => p.tier !== "featured").map(renderProjectCard).join(""));
+}
+
+// Smaller projects: one compact row each, then a link to everything on GitHub.
+function renderMoreProjects(projects, githubUrl) {
+  const rows = projects
+    .map(
+      (p) => `
+      <li class="more-item">
+        <div class="more-text">
+          <p class="more-title">${escapeHtml(p.title)} <span class="more-date">${escapeHtml(p.date)}</span></p>
+          <p class="more-summary">${escapeHtml(p.summary)}</p>
+          <p class="project-tools"><span class="visually-hidden">Tools used: </span>${p.tools.map(escapeHtml).join(" · ")}</p>
+        </div>
+        <p class="more-links">${p.links
+          .map((l) => `<a href="${escapeHtml(l.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(l.label)}<span class="visually-hidden"> for ${escapeHtml(p.title)} (opens in a new tab)</span></a>`)
+          .join("")}</p>
+      </li>`
+    )
+    .join("");
+  fill(
+    "more-projects",
+    `<h3 class="subsection-title">More projects</h3>
+     <ul class="more-list">${rows}</ul>
+     <p class="more-all"><a href="${escapeHtml(githubUrl)}" target="_blank" rel="noopener noreferrer">See all my projects on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></p>`
+  );
 }
 
 function renderExperience(content) {
@@ -307,6 +339,41 @@ function setupProjectToggles() {
   });
 }
 
+/* ---------- Reading panel: details of the medium-size project cards ---------- */
+
+function setupDetailsViewer() {
+  const viewer = document.getElementById("details-viewer");
+  if (!viewer) return;
+  const body = document.getElementById("details-viewer-body");
+
+  document.querySelectorAll(".project-open").forEach((button) => {
+    button.addEventListener("click", () => {
+      const panel = document.getElementById(button.dataset.panel);
+      document.getElementById("details-viewer-title").textContent = button.dataset.title;
+      body.className = panel.className; // keeps the same layout rules as the inline panels
+      body.innerHTML = panel.innerHTML;
+      viewer.showModal();
+    });
+  });
+
+  document.getElementById("details-viewer-close").addEventListener("click", () => viewer.close());
+  viewer.addEventListener("click", (event) => {
+    if (event.target === viewer) viewer.close();
+  });
+}
+
+/* ---------- PREVIEW ONLY: font switcher (remove before publishing) ---------- */
+
+function setupFontSwitcher() {
+  const buttons = document.querySelectorAll(".font-switcher button");
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      document.documentElement.dataset.font = button.dataset.font;
+      buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === button)));
+    });
+  });
+}
+
 /* ---------- Screenshot viewer: click a screenshot to see it full-size ---------- */
 
 function setupImageViewer() {
@@ -380,11 +447,14 @@ function setupTimelineMarker() {
 renderHero(SITE_CONTENT);
 renderAbout(SITE_CONTENT);
 renderProjects(PROJECTS);
+renderMoreProjects(typeof MORE_PROJECTS === "undefined" ? [] : MORE_PROJECTS, SITE_CONTENT.links.github);
 renderExperience(SITE_CONTENT);
 renderEducation(SITE_CONTENT);
 renderCertifications(SITE_CONTENT);
 renderSkills(SITE_CONTENT);
 renderContact(SITE_CONTENT);
 setupProjectToggles();
+setupDetailsViewer();
+setupFontSwitcher();
 setupImageViewer();
 setupTimelineMarker();

@@ -18,6 +18,8 @@
   --color-todo-border: #E0B54A;
 
   --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-heading: var(--font);  /* headings, names, titles */
+  --font-mono: var(--font);     /* dates, tools, small labels */
   --radius: 12px;
   --max-width: 1080px;
   --section-space: 5.5rem;
@@ -896,4 +898,310 @@ a:hover {
   * {
     transition: none !important;
   }
+}
+
+
+/* =============================================================
+   PREVIEW: new typography, project tiers, compact list
+   ============================================================= */
+
+/* ---------- Font pairings (chosen with the preview switcher) ---------- */
+:root[data-font="editorial"] {
+  --font-heading: "Source Serif 4", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+:root[data-font="classic"] {
+  --font-heading: "Fraunces", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+:root[data-font="modern"] {
+  --font-heading: "Space Grotesk", var(--font);
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+h1, h2, h3, h4,
+.nav-name,
+.cert-name,
+.more-title {
+  font-family: var(--font-heading);
+}
+
+.project-meta,
+.timeline-date,
+.card-date,
+.cert-meta,
+.more-date,
+.project-tools,
+.hero-label {
+  font-family: var(--font-mono);
+}
+
+/* ---------- Tools as plain text instead of pills ---------- */
+.project-tools {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin: 0 0 1.25rem;
+}
+
+.project-highlight {
+  font-weight: 500;
+  color: var(--color-aubergine);
+}
+
+/* ---------- Featured project: the big card ---------- */
+.project-featured .project-main {
+  grid-template-columns: 3fr 2fr;
+}
+
+.project-featured .project-title {
+  font-size: clamp(1.5rem, 2.6vw, 1.95rem);
+}
+
+.project-featured .project-main {
+  align-items: center;
+}
+
+.project-featured .project-image-button,
+.project-featured .project-image {
+  height: auto;
+}
+
+/* Secondary links in the featured card: light text links, not big buttons */
+.project-featured .button-row,
+.project-grid .button-row {
+  column-gap: 1.25rem;
+}
+
+.project-featured .btn-secondary,
+.project-grid .btn-secondary {
+  padding: 0.2rem 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--color-purple);
+  font-size: 0.92rem;
+}
+
+.project-featured .btn-secondary::after,
+.project-grid .btn-secondary::after {
+  content: "↗";
+  margin-left: 0.15rem;
+}
+
+.project-featured .btn-secondary:hover,
+.project-grid .btn-secondary:hover {
+  background: none;
+  color: var(--color-aubergine);
+  text-decoration: underline;
+}
+
+/* ---------- Main projects: medium cards, side by side ---------- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.project-grid .project-card,
+.project-grid .project-main,
+.project-grid .project-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-grid .project-card,
+.project-grid .project-main,
+.project-grid .project-body {
+  flex: 1;
+}
+
+.project-grid .project-image {
+  height: auto;
+  border-right: 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.project-grid .project-body {
+  padding: 1.25rem 1.4rem 1.5rem;
+}
+
+.project-grid .project-title {
+  font-size: 1.15rem;
+}
+
+.project-grid .project-description,
+.project-grid .project-highlight {
+  font-size: 0.93rem;
+}
+
+.project-grid .button-row {
+  margin-top: auto; /* buttons line up at the bottom of each card */
+}
+
+/* ---------- More projects: compact list ---------- */
+.more-projects {
+  margin-top: 3rem;
+}
+
+.more-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.more-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.more-title {
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-aubergine);
+}
+
+.more-date {
+  margin-left: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.more-summary {
+  margin: 0.2rem 0 0.35rem;
+  font-size: 0.95rem;
+}
+
+.more-item .project-tools {
+  margin: 0;
+}
+
+.more-links {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.more-links a {
+  margin-left: 1.1rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.more-links a::after,
+.more-all a::after {
+  content: " ↗";
+}
+
+.more-all {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+/* ---------- Reading panel for medium cards ---------- */
+.details-viewer {
+  width: min(900px, 94vw);
+  max-height: 90vh;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  overflow: auto;
+}
+
+.details-viewer::backdrop {
+  background: rgba(20, 10, 25, 0.6);
+}
+
+.details-viewer-title {
+  margin: 0;
+  padding: 1.75rem 2rem 0;
+  font-size: 1.4rem;
+}
+
+.details-viewer .project-details {
+  border-top: 0;
+  background: #fff;
+}
+
+/* ---------- PREVIEW ONLY: font switcher ---------- */
+.font-switcher {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.6rem;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(63, 29, 69, 0.15);
+  font-family: var(--font);
+  font-size: 0.82rem;
+}
+
+.font-switcher span {
+  padding: 0 0.3rem;
+  color: var(--color-text-muted);
+}
+
+.font-switcher button {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: none;
+  font: inherit;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.font-switcher button[aria-pressed="true"] {
+  background: var(--color-aubergine);
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .more-item {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .more-links a {
+    margin: 0 1.1rem 0 0;
+  }
+
+  .details-viewer-title {
+    padding: 1.25rem 1.25rem 0;
+  }
+}
+
+/* Medium cards: the "Click to enlarge" label only shows on hover or keyboard focus */
+.project-grid .enlarge-hint {
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.project-grid .project-image-button:hover .enlarge-hint,
+.project-grid .project-image-button:focus-visible .enlarge-hint {
+  opacity: 1;
+}
+
+/* Medium cards: every chart gets exactly the same box, so the text below lines up */
+.project-grid .project-image-button {
+  height: auto;
+  flex: none;
+}
+
+.project-grid .project-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
 }

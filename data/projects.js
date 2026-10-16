@@ -26,6 +26,7 @@ const PROJECTS = [
   {
     // Sources: the READMEs of the four repos below, and CONCLUSION.md in amc-debt-and-survival.
     id: "amc-series",
+    tier: "featured",
     title: "AMC: From Box Office to Balance Sheet",
     context: "Personal project series · 4 parts",
     date: "Fall 2026",
@@ -34,8 +35,7 @@ const PROJECTS = [
     tags: ["Python", "pandas", "statsmodels", "Tableau", "SEC XBRL", "Forecasting", "Financial modeling", "Statistical testing"],
     image: {
       src: "assets/images/amc-series.png",
-      full: "assets/images/amc-series-full.png", // shown when the screenshot is clicked
-      alt: "Survival map of AMC's free cash flow after interest by U.S. attendance and interest rate: red where AMC needs new money, green where it funds itself, with the break-even line near 168 million guests",
+      alt: "Bar chart of AMC's U.S. attendance from 2015 to the last four quarters (165 million), against break-even lines at 168 million to stop burning cash and 184 million to report a profit",
     },
     links: {
       github: "",
@@ -77,6 +77,7 @@ const PROJECTS = [
   {
     // Source: github.com/julixlyz08/seven-eleven-japan-who-pays (README)
     id: "seven-eleven",
+    tier: "main",
     title: "7-Eleven Japan: Who Pays?",
     context: "Personal project",
     date: "Fall 2026",
@@ -85,7 +86,7 @@ const PROJECTS = [
     tags: ["Python", "pandas", "statsmodels", "Spatial analysis", "Panel regression", "Monte Carlo", "Valuation"],
     image: {
       src: "assets/images/seven-eleven.png",
-      alt: "Line chart, FY2019 = 100: the minimum wage rises to 164 by FY2030 while sales per store reach 118, head office's take 114, and the owner's profit falls to 46, with a shaded Monte Carlo range",
+      alt: "Line chart, FY2019 = 100: by FY2030 the minimum wage reaches 164, sales per store 118, head office's take 114, and the owner's profit falls to 46",
     },
     links: {
       github: "https://github.com/julixlyz08/seven-eleven-japan-who-pays",
@@ -113,6 +114,7 @@ const PROJECTS = [
   {
     // Source: github.com/julixlyz08/airbnb-who-the-hosts-are (README)
     id: "airbnb",
+    tier: "main",
     title: "Airbnb in Los Angeles: Who the Hosts Are",
     context: "Personal project",
     date: "Fall 2026",
@@ -121,7 +123,7 @@ const PROJECTS = [
     tags: ["SQL", "SQLite", "Python", "statsmodels", "Regression", "Text analysis", "Time series"],
     image: {
       src: "assets/images/airbnb.png",
-      alt: "Chart of the price gap between hosts with 6+ listings and single-listing hosts as controls are added: +14.8% with no controls, about zero once home size is included, and +2% to +4% with all controls",
+      alt: "Bar chart: single-listing hosts are 67% of short-term hosts with 40% of listings, while hosts with 6+ listings are 11% of hosts with 37% of listings",
     },
     links: {
       github: "https://github.com/julixlyz08/airbnb-who-the-hosts-are",
@@ -150,6 +152,7 @@ const PROJECTS = [
   {
     // Source: team memo and github.com/julixlyz08/credit-risk-classification-model (README)
     id: "credit-risk",
+    tier: "main",
     title: "Credit Risk Classification Model",
     context: "Team capstone · CSUN",
     date: "Spring 2026",
@@ -158,7 +161,7 @@ const PROJECTS = [
     tags: ["Python", "scikit-learn", "Machine learning", "Logistic Regression"],
     image: {
       src: "assets/images/credit-risk.png",
-      alt: "ROC curves for the four models on the test set: Random Forest AUC 0.788, Logistic Regression 0.771, Decision Tree 0.722, Neural Network 0.711",
+      alt: "Bar chart of test-set ROC-AUC: Random Forest 0.79, Logistic Regression 0.77 (recommended), Decision Tree 0.72, Neural Network 0.71",
     },
     links: {
       github: "https://github.com/julixlyz08/credit-risk-classification-model",
@@ -184,4 +187,31 @@ const PROJECTS = [
   },
 
   // Future: add the AI agents class project here when it is finished.
+];
+
+/* =============================================================
+   MORE_PROJECTS: smaller projects, shown as a compact list under
+   the main projects. One line each: no screenshot, no details.
+   ============================================================= */
+
+const MORE_PROJECTS = [
+  {
+    title: "Movie Profitability Analysis",
+    summary: "Which films earn the best return? 5,651 releases from the TMDB API, analyzed in Python and SQL, with a Tableau dashboard.",
+    tools: ["Python", "SQL", "Tableau"],
+    date: "Fall 2026",
+    links: [
+      { label: "GitHub", href: "https://github.com/julixlyz08/movie_profitability_analysis" },
+      { label: "Tableau", href: "https://public.tableau.com/app/profile/julie.loyez/viz/WhatMakesaMovieProfitable_17913327259050/MovieProfitabilityDashboard" },
+    ],
+  },
+  {
+    title: "Stock Data Pipeline",
+    summary: "A Python pipeline that pulls 100 days of Intel stock prices from a REST API, scores volatility and buy/sell/hold signals, and stores them in SQLite.",
+    tools: ["Python", "REST API", "SQLite"],
+    date: "Spring 2026",
+    links: [
+      { label: "GitHub", href: "https://github.com/julixlyz08/stock-data-pipeline" },
+    ],
+  },
 ];
