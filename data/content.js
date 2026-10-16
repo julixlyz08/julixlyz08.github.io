@@ -38,7 +38,7 @@ const SITE_CONTENT = {
 
   // Each line is one paragraph. Written from Julie's own answers.
   about: [
-    "I came to data through curiosity. After business school in France, I realized there was a gap in what I could understand without it, so I started learning. It challenged me in a way nothing had in years, in the best way.",
+    "I came to data through curiosity. My business studies focused on marketing, and while I had a few classes on numbers, they only scratched the surface. I later realized data was the missing piece, even for marketing, so I started learning. It challenged me in a way nothing had in years, in the best way.",
     "My first real project was a deep dive into AMC Theatres. One question about attendance turned into four projects, from the box office to the balance sheet, and showed me what I can do when I keep asking \"so what?\" instead of stopping at the first result.",
     "I'm finishing my MS in Business Analytics at CSUN (May 2027). Entertainment is my childhood dream, but I'd be just as happy at any company where I can ask good questions of data and find a way to answer them.",
   ],
