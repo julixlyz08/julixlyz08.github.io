@@ -9,7 +9,7 @@
    - id:          short unique name, no spaces (used internally)
    - context:     e.g. "Team capstone · CSUN"
    - highlight:   one key result shown on the card ("" to hide)
-   - image.src:   screenshot path, e.g. "assets/images/credit-risk.png"
+   - image.src:   screenshot path, e.g. "assets/images/credit-risk.webp"
    - image.full:  optional bigger version shown when the screenshot is clicked
                   (leave "" to show a "coming soon" placeholder)
    - links:       leave "" to hide a button; links.extra is an optional list
