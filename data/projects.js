@@ -81,7 +81,7 @@ const PROJECTS = [
     title: "7-Eleven Japan: Who Pays?",
     context: "Personal project",
     date: "Fall 2026",
-    description: "Where does 7-Eleven Japan's edge come from, who pays for it, and what is it worth? A four-part analysis built only from public data: Seven & i's filings, government statistics and OpenStreetMap.",
+    description: "A four-part look at Japan's largest convenience-store chain, built only from public data.",
     highlight: "Rising wages land on store owners, not head office: by FY2030 an owner's profit roughly halves while head office's take grows 14%.",
     tags: ["Python", "pandas", "statsmodels", "Spatial analysis", "Panel regression", "Monte Carlo", "Valuation"],
     image: {
@@ -118,7 +118,7 @@ const PROJECTS = [
     title: "Airbnb in Los Angeles: Who the Hosts Are",
     context: "Personal project",
     date: "Fall 2026",
-    description: "How does the type of host change what guests pay, what they experience, and when they travel? Four parts using Inside Airbnb data for the City of Los Angeles and Airbnb's own SEC filings.",
+    description: "Four parts on how host size shapes prices, reviews and seasons in Los Angeles.",
     highlight: "Large hosts' 15% price premium mostly reflects bigger homes: like-for-like, it shrinks to 2–5%, within what could be chance.",
     tags: ["SQL", "SQLite", "Python", "statsmodels", "Regression", "Text analysis", "Time series"],
     image: {
@@ -156,7 +156,7 @@ const PROJECTS = [
     title: "Credit Risk Classification Model",
     context: "Team capstone · CSUN",
     date: "Spring 2026",
-    description: "A machine learning model that flags higher-risk Lending Club loan applicants using only the information available when they apply, so risky loans can be caught before any money goes out.",
+    description: "A model that flags higher-risk loan applicants using only what is known when they apply.",
     highlight: "Raised the share of risky loans caught from 22% to 86% with a cost-based threshold, cutting total error cost by more than half.",
     tags: ["Python", "scikit-learn", "Machine learning", "Logistic Regression"],
     image: {

@@ -76,7 +76,7 @@ function renderHero(content) {
   });
   fill("hero-label", escapeHtml(content.heroLabel));
   fill("hero-tagline", escapeHtml(content.tagline));
-  fill("hero-skills", content.topSkills.map((skill) => `<li class="tag">${escapeHtml(skill)}</li>`).join(""));
+  fill("hero-skills", `<span class="visually-hidden">Top skills: </span>${content.topSkills.map(escapeHtml).join(" · ")}`);
 
   // Photo is optional: only shown when photo.src is filled in.
   if (hasValue(content.photo.src) && !isTodo(content.photo.src)) {
@@ -93,7 +93,7 @@ function renderHero(content) {
 // so they always stay in the same order.
 function contactButtons(links) {
   return (
-    linkButton({ label: "Download Resume (PDF)", href: links.resume, download: true }) +
+    linkButton({ label: "Resume (PDF)", href: links.resume, external: true }) +
     linkButton({ label: "LinkedIn", href: links.linkedin, style: "secondary", external: true }) +
     linkButton({ label: "GitHub", href: links.github, style: "secondary", external: true }) +
     linkButton({ label: "Email", href: `mailto:${links.email}`, style: "secondary" })
