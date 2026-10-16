@@ -130,7 +130,7 @@ const SITE_CONTENT = {
     },
     {
       group: "Analysis",
-      items: ["Forecasting", "Machine learning", "Financial modeling", "Scenario analysis", "Statistical testing", "Survey analysis"],
+      items: ["Regression", "Forecasting & time series", "Machine learning", "Statistical testing", "Financial modeling & valuation", "Text analysis", "Spatial analysis"],
     },
     {
       group: "Visualization & Tools",
