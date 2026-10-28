@@ -24,13 +24,51 @@
 
 const PROJECTS = [
   {
+    // Source: github.com/julixlyz08/robinhood-unbundled (README and outputs/)
+    id: "robinhood",
+    tier: "featured",
+    title: "Robinhood, Unbundled",
+    context: "Personal project",
+    date: "Fall 2026",
+    description: "Robinhood reports revenue for each product but profit only for the whole company. I split it into five businesses, estimated each one's profit and value, and forecast its Q3 2026 revenue nine days before the earnings report.",
+    highlight: "My Q3 2026 revenue forecast landed within 0.6% of reported revenue, and was more accurate line by line than the Zacks analyst consensus.",
+    tags: ["Python", "pandas", "Forecasting", "Backtesting", "Financial modeling", "Valuation", "Tableau"],
+    image: {
+      src: "assets/images/robinhood.webp",
+      alt: "Dot chart of Q3 2026 forecast errors by revenue line: my forecast was within $1M on options and closer than the Zacks consensus overall, $82M of total line errors vs $108M",
+    },
+    links: {
+      github: "https://github.com/julixlyz08/robinhood-unbundled",
+      tableau: "https://public.tableau.com/app/profile/julie.loyez/viz/RobinhoodUnbundled/RobinhoodUnbundled",
+    },
+    details: {
+      question: "Robinhood reports profit only for the whole company. Split into five businesses (options, stocks, crypto, prediction markets, subscriptions & banking), does each make money, how much does it earn per trade, is it beating competitors, and what is it worth? And can its next quarter be forecast from public monthly data?",
+      data: "Robinhood's quarterly earnings releases (Q2 2021 to Q3 2026), each reconciled to reported totals, and its monthly operating data; competitors' releases and filings (Interactive Brokers, Schwab, Coinbase, SoFi, Webull); the Zacks consensus; prices and analyst estimates from Yahoo Finance and stockanalysis.com.",
+      whatIDid: [
+        "Split Robinhood's revenue into five businesses and calculated what it earns per trade in each, separating the Bitstamp exchange from the app.",
+        "Estimated each business's profit with transparent cost-split rules, and stress-tested what happens if customers trade 10–50% less.",
+        "Valued each business like its closest listed competitor (sum of the parts) and compared the total with the stock market's value.",
+        "Forecast Q3 2026 revenue line by line from monthly activity data nine days before the report (backtested on nine quarters), then scored it against the reported results and the Zacks consensus.",
+      ],
+      findings: [
+        "Trading revenue grows because customers trade more, not because Robinhood charges more: it still earns about $0.44 per options contract.",
+        "If customers trade 30% less, revenue falls 18% but operating profit falls 37%: fixed costs make profit move about twice as fast.",
+        "Prediction markets already bring in more than crypto ($156M vs $100M in Q2 2026), about a year after launch.",
+        "Valued like its competitors, Robinhood is worth about $57B; the stock market valued it at $89B, about $32B of bet on continued fast growth.",
+        "The Q3 forecast was within 0.6% of reported revenue ($1,432M vs $1,424M), with $82M of total line errors vs $108M for the Zacks consensus. The misses came from earnings per trade, not activity.",
+      ],
+      role: "Independent project: I collected the data, built the models and the forecast, scored my own forecast, and built the Tableau dashboard.",
+    },
+  },
+
+  {
     // Sources: the READMEs of the four repos below, and CONCLUSION.md in amc-debt-and-survival.
     id: "amc-series",
-    tier: "featured",
+    tier: "main",
     title: "AMC: From Box Office to Balance Sheet",
     context: "Personal project series · 4 parts",
     date: "Fall 2026",
-    description: "Four connected projects that follow AMC from how many people go to its theatres, to why its stock collapsed, how it makes money, and whether it can carry its debt. Built from every AMC 10-Q and 10-K, with an interactive Tableau dashboard.",
+    description: "Four connected projects that follow AMC from the box office to the balance sheet, built from every AMC 10-Q and 10-K.",
     highlight: "AMC needs about 168 million U.S. guests a year to stop burning cash. It has 165 million, and $3.2bn of debt falls due in 2029.",
     tags: ["Python", "pandas", "statsmodels", "Tableau", "SEC XBRL", "Forecasting", "Financial modeling", "Statistical testing"],
     image: {

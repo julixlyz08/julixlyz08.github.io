@@ -1007,7 +1007,7 @@ h1, h2, h3, h4,
 /* ---------- Main projects: medium cards, side by side ---------- */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   margin-top: 1.75rem;
 }
@@ -1251,4 +1251,11 @@ h1, h2, h3, h4,
 /* Footer: "Last updated" note */
 .footer-updated {
   white-space: nowrap;
+}
+
+/* Phones: main project cards in one column */
+@media (max-width: 760px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -124,6 +124,12 @@ const SITE_CONTENT = {
   // readTime: about 230 words per minute.
   writing: [
     {
+      title: "Forecasting Robinhood's quarter: what I got right, and what I got wrong",
+      teaser: "My Q3 forecast landed within 0.6% of reported revenue, but the misses taught me more than the hit.",
+      readTime: "3 min read",
+      link: "https://github.com/julixlyz08/robinhood-unbundled#q3-2026-forecast-and-how-it-did",
+    },
+    {
       title: "From box office to balance sheet: what four projects say about AMC",
       teaser: "Why AMC's stock fell 97% while guests came back, and the one attendance line that decides its future.",
       readTime: "7 min read",
